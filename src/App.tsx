@@ -2,7 +2,7 @@ import { Layout } from 'antd';
 import AppRouter from 'components/AppRouter';
 import Navbar from 'components/Navbar';
 import { FC } from 'react';
-import './app.css'
+import './App.scss'
 
 
 const App: FC = () => {
