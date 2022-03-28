@@ -1,4 +1,4 @@
-import axios from "axios";
+import UserService from "api/UserService";
 import { IUser } from "models";
 import { AppDispatch } from "store";
 import { AuthActionType, SetAuthAction, SetAuthErrorAction, SetAuthLoadingAction, SetUserAction } from "./types";
@@ -15,11 +15,11 @@ export const AuthActionCreators = {
         type: AuthActionType.SET_AUTH,
         payload: auth
     }),
-    setIsloading: (loading: boolean): SetAuthLoadingAction => ({
+    setAuthIsloading: (loading: boolean): SetAuthLoadingAction => ({
         type: AuthActionType.SET_LOADING,
         payload: loading
     }),
-    setError: (error: string): SetAuthErrorAction => ({
+    setAuthError: (error: string): SetAuthErrorAction => ({
         type: AuthActionType.SET_ERROR,
         payload: error
     }),
@@ -27,10 +27,10 @@ export const AuthActionCreators = {
     //асинхронные
     login: (username: string, password: string) => async (dispatch: AppDispatch) => {
         try {
-            dispatch(AuthActionCreators.setError(''))
-            dispatch(AuthActionCreators.setIsloading(true));
+            dispatch(AuthActionCreators.setAuthError(''))
+            dispatch(AuthActionCreators.setAuthIsloading(true));
             setTimeout(async () => {
-                const response = await axios.get<IUser[]>('./users.json');
+                const response = await UserService.getUsers();
                 const user = response.data.find(user =>
                     user.username === username && user.password === password);
                 if (user) {
@@ -39,12 +39,12 @@ export const AuthActionCreators = {
                     dispatch(AuthActionCreators.setIsAuth(true));
                     dispatch(AuthActionCreators.setUser(user));
                 } else {
-                    dispatch(AuthActionCreators.setError('Incorrect name or password'))
+                    dispatch(AuthActionCreators.setAuthError('Incorrect name or password'))
                 }
-                dispatch(AuthActionCreators.setIsloading(false));
+                dispatch(AuthActionCreators.setAuthIsloading(false));
             }, 1000)
         } catch (e: any) {
-            dispatch(AuthActionCreators.setError('Server login error'))
+            dispatch(AuthActionCreators.setAuthError('Server login error'))
         }
     },
     logout: () => async (dispatch: AppDispatch) => {
