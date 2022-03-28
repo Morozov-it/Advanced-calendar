@@ -2,7 +2,7 @@ import { Layout } from 'antd';
 import AppRouter from 'components/AppRouter';
 import Navbar from 'components/Navbar';
 import { useActions } from 'hooks/useActions';
-import { IUser } from 'models/IUser';
+import { IUser } from 'models';
 import { FC, useEffect } from 'react';
 import './App.scss'
 

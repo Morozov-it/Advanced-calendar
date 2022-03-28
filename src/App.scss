@@ -2,9 +2,14 @@
 
 #root {
     height: 100%;
-    width: 100%;
 }
 
 .h100 {
     height: calc(100vh - 64px);
+}
+
+.container {
+    max-width: 992px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
 }

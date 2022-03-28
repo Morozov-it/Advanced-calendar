@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IUser } from "models/IUser";
+import { IUser } from "models";
 import { AppDispatch } from "store";
 import { AuthActionType, SetAuthAction, SetAuthErrorAction, SetAuthLoadingAction, SetUserAction } from "./types";
 

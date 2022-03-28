@@ -12,7 +12,6 @@ const LoginForm: FC = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-
     const submit = () => {
         login(username, password)
     }
