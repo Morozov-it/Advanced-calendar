@@ -1,21 +1,20 @@
-import { Button, Form, Input, Typography } from 'antd'
-import { useTypedSelector } from 'hooks/useTypedSelector'
-import { FC, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { AuthActionCreators } from 'store/reducers/auth/actionCreators'
-import { rules } from 'utils/rules'
+import { Button, Form, Input, Typography } from 'antd';
+import { useActions } from 'hooks/useActions';
+import { useTypedSelector } from 'hooks/useTypedSelector';
+import { FC, useState } from 'react';
+import { rules } from 'utils/rules';
 
 
 
 const LoginForm: FC = () => {
-    const dispatch = useDispatch()
+    const { login } = useActions()
     const { error, isLoading } = useTypedSelector(state => state.auth)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
 
     const submit = () => {
-        dispatch(AuthActionCreators.login(username, password))
+        login(username, password)
     }
 
     return (
