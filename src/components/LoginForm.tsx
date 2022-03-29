@@ -19,7 +19,7 @@ const LoginForm: FC = () => {
     return (
         <Form
             onFinish={submit}
-            name="basic"
+            name="login"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
             autoComplete="off">

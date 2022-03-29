@@ -36,8 +36,8 @@ export const AuthActionCreators = {
                 if (user) {
                     localStorage.setItem('username', user.username);
                     localStorage.setItem('auth', 'true');
-                    dispatch(AuthActionCreators.setIsAuth(true));
                     dispatch(AuthActionCreators.setUser(user));
+                    dispatch(AuthActionCreators.setIsAuth(true));
                 } else {
                     dispatch(AuthActionCreators.setAuthError('Incorrect name or password'))
                 }

@@ -4,6 +4,13 @@
     height: 100%;
 }
 
+ul {
+    padding: 0;
+    & li{
+        list-style-type: none;
+    }
+}
+
 .h100 {
     height: calc(100vh - 64px);
 }

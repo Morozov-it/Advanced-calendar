@@ -42,11 +42,13 @@ const EventForm: FC<EventFormProps> = ({ guests, submit }) => {
 
     return (
         <Form
+            name="event"
             onFinish={submitForm}
             labelCol={{ span: 10 }}
             wrapperCol={{ span: 10 }}>
             <Form.Item 
                 label="Event description"
+                name="description"
                 rules={[rules.required()]}>
                 <Input
                     name="description"
@@ -56,6 +58,7 @@ const EventForm: FC<EventFormProps> = ({ guests, submit }) => {
             </Form.Item>
             <Form.Item 
                 label="Guest"
+                name='guest'
                 rules={[rules.required()]}>
                 <Select
                     onChange={(guest: string) =>
@@ -70,7 +73,8 @@ const EventForm: FC<EventFormProps> = ({ guests, submit }) => {
             </Form.Item>
             <Form.Item 
                 label="Date of event"
-                rules={[rules.required()]}>
+                name='date'
+                rules={[rules.required(), rules.isDateAfter('Can not pick last date')]}>
                 <DatePicker
                     onChange={(date: Moment | null) => {
                         const selected = selectDate(date);
@@ -80,7 +84,6 @@ const EventForm: FC<EventFormProps> = ({ guests, submit }) => {
             <Row justify='end'>
                 <Form.Item>
                     <Button
-                        //loading={ }
                         type="primary"
                         htmlType="submit">
                         Create

@@ -18,9 +18,9 @@ const Calendar: FC<CalendarProps> = ({ events }) => {
 
         return (
             <ul className="events">
-                {currentDayEvent.map(item => (
-                <li key={item.description}>
-                    <Badge text={item.description} />
+                {currentDayEvent.map((item, i) => (
+                <li key={i}>
+                    <Badge status="success" text={item.description} />
                 </li>
                 ))}
             </ul>
